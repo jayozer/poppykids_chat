@@ -1,0 +1,12 @@
+Input Text:
+"[Insert the full text of the blog article here]"
+
+Instructions:
+Generate a list of question and answer pairs based on the content provided. Each Q&A pair should summarize and extract key information relevant to parents of infants, children, and teens. Questions should be direct and address common concerns or topics in pediatric dentistry. Answers must be concise, accurate, and no longer than two sentences, providing a brief summary of the essential points from the text related to the question.
+
+Example:
+
+Q: What is the recommended age for a child's first dental visit?
+A: The American Academy of Pediatric Dentistry recommends that a child's first dental visit should be by age 1 or within six months after the first tooth erupts.
+Output:
+List the Q&A pairs based on the above guidelines.
