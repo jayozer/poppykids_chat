@@ -2284,43 +2284,31 @@ Answer: It's best to maintain the usual sleeping environment and routine during 
 Question: What are the typical symptoms of a baby who is teething?
 Answer: Typical signs of teething in babies include gum rubbing, excessive drooling, crankiness, wakefulness, and a loss of appetite. However, fever and diarrhea are not symptoms of teething and may indicate other issues.
  
-
 Question: At what age do babies usually begin teething?
-
 Answer: Babies typically start teething around six months of age.
- 
 
 Question: How can parents care for their baby's new teeth?
-
 Answer: Parents should gently clean their baby's gums with a clean washcloth, use an infant toothbrush with water, and begin flossing once teeth touch. Around age 2, introduce fluoride toothpaste and teach the child to spit while brushing.
  
-
 Question: What should parents do if their baby shows signs of teething?
-
 Answer: If a baby shows signs of teething, parents can soothe the discomfort with refrigerated teething rings, gentle gum pressure, or over-the-counter pain relief medicines like ibuprofen, after consulting with a pediatrician.
   
-
 Question: What are the risks associated with using benzocaine products for teething?
 Answer: The U.S. Food and Drug Administration warns against using benzocaine products for children under two years old due to serious side effects. Parents are advised to use alternate methods for teething relief.
   
-
 Question: When should a baby have their first dental visit?
 Answer: A baby should visit the dentist within six months following the eruption of their first tooth, as per guidelines from the American Dental Association.
   
-
 Question: How does teething affect a baby's eating and sleeping patterns?
-
 Answer: Teething can lead to a loss of appetite and disturbed sleep patterns, as the discomfort can make babies refuse food and wake up frequently during the night.
   
-
 Question: What should parents do if their teething baby develops a fever or diarrhea?
-
 Answer: If a teething baby develops a fever or diarrhea, parents should contact their pediatrician, as these are likely signs of a different illness not related to teething.
 
 Question: At what age do children typically start losing their baby teeth?
 Answer: Children usually begin to lose their baby teeth around 6 years old, according to the Canadian Dental Association.
 
-  Question: Which baby teeth are usually the first to fall out?
+Question: Which baby teeth are usually the first to fall out?
 Answer: The first baby teeth to fall out are typically the two central bottom teeth at the front of the mouth, followed by the two central top teeth.
 
 Question: What should parents do when their child has a loose baby tooth?
@@ -2525,7 +2513,7 @@ Question: What role do lip and cheek bumpers play in orthodontics?
 Answer: Lip and cheek bumpers are used to relieve pressure from the lips and cheeks on the teeth. This is especially useful for individuals whose lip and cheek muscles exert undue pressure that could potentially misalign the teeth.
 
 Question: How do orthodontists determine the appropriate treatment plan?
-  Answer: Orthodontists use a combination of clinical exams, plastic models of the patient's teeth, and X-rays to assess the specific dental issues. Based on these diagnostic tools, they develop a personalized treatment plan tailored to address the individual's needs and dental conditions.
+Answer: Orthodontists use a combination of clinical exams, plastic models of the patient's teeth, and X-rays to assess the specific dental issues. Based on these diagnostic tools, they develop a personalized treatment plan tailored to address the individual's needs and dental conditions.
 
 Question: What should parents do if their child who plays football needs braces?
 Answer: Parents should ensure their child uses a football mouthguard specifically designed for braces to protect their teeth and braces while playing. They should also speak with the child's coach and orthodontist to choose the right type of mouthguard and ensure it fits properly.

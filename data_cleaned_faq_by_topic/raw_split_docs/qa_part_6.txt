@@ -1,0 +1,30 @@
+Question: What causes Hand, Foot, and Mouth Disease (HFMD)?
+Answer: HFMD is caused by different strains of the Coxsackievirus, with Coxsackievirus A16 being one of the common causes in the United States.
+Question: How is HFMD transmitted among children?
+Answer: HFMD is transmitted through direct contact with saliva, stool, liquid from blisters, or respiratory droplets from a cough or sneeze.
+Question: What are the common symptoms of HFMD in children?
+Answer: Common symptoms include fever, painful sores in and around the mouth, skin rash with blisters on hands and feet, poor appetite, difficulty swallowing, dehydration risks, and irritability in infants.
+Question: What should I do if my child has HFMD and doesn't want to eat or drink?
+Answer: Offer soft, cold, and hydrating foods and liquids like ice chips, ice cream, or cold beverages. Avoid spicy, acidic, and sweet foods to prevent exacerbating the pain.
+Question: How can the symptoms of HFMD be treated?
+Answer: There is no specific treatment for HFMD, but symptoms can be alleviated with over-the-counter topical analgesics, acetaminophen or ibuprofen for pain and fever, and maintaining hydration with IV fluids if necessary.
+Question: What preventive measures can be taken to reduce the risk of HFMD?
+Answer: Practice good hygiene such as handwashing, especially after using the restroom and before eating, disinfect surfaces and toys in child care environments, and avoid close contact with infected individuals.
+Question: When should a child with HFMD see a doctor?
+Answer: Consult a doctor if the child is unable to drink enough liquids, shows signs of dehydration, or if symptoms worsen after a few days.
+Question: How long does it typically take for a child to recover from HFMD?
+Answer: Most children recover from HFMD in less than two weeks, but recovery times can vary depending on the severity of the symptoms.
+Question: Is HFMD contagious even if the infected person shows no symptoms?
+Answer: Yes, HFMD can be contagious even if the infected person is asymptomatic, which makes controlling its spread challenging in communal settings like daycares.
+Question: How does HFMD differ from Herpangina?
+Answer: While both are caused by similar viruses and have similar initial symptoms like fever and sore throat, Herpangina primarily results in blisters at the back of the mouth and usually affects children aged three to ten, resolving within three to five days.
+Question: Why should parents avoid using teething tablets for their babies?
+Answer: Teething tablets can contain toxic ingredients like belladonna, which is considered "likely unsafe" for oral intake. The lack of regulation in the supplement industry makes it difficult to verify the purity and dosage of the ingredients, posing potential risks like extreme lethargy and seizures if overdosed.
+Question: What are the signs that a baby is teething?
+Answer: Signs of teething in babies include increased irritability, excessive drooling, tender gums, and a heightened desire to chew on hard objects.
+Question: What are safe alternatives to teething tablets for relieving a baby's discomfort?
+Answer: Safe alternatives include giving the baby a cold washcloth or a chilled teething ring to chew on, massaging the baby’s gums with clean fingers, and wiping away drool to prevent skin irritation. If necessary, a pediatrician-approved pain reliever like ibuprofen can also be used.
+Question: How can parents safely manage their teething baby's discomfort?
+Answer: Parents can manage teething discomfort by providing items to chew on like cold washcloths or teething rings, massaging the baby's gums, keeping the baby's mouth clean, and consulting a pediatrician for appropriate pain relief methods.
+Question: When should a baby start an oral care routine, and what does it involve?
+Answer: A baby should start an oral care routine as soon as their teeth begin to emerge. This involves using an age-appropriate toothbrush and a tiny amount of toothpaste (the size of a grain of rice) to brush twice daily, helping to familiarize the baby with dental products and maintain oral hygiene.
