@@ -49,15 +49,17 @@ flowchart TD;
     M --> N[End: Successfully Categorized into Topics];
     
 ```
-# Next is to convert the `faq_training.txt` file to a format that can be used to train MIstral 7B Instruct.
+#### Finetuning Mistral for behaviour change to Q&A.
+- Initial runs using OPENAI for all requests turned out to be super expensive. On average one conversation flow cost ~ 1M tokens. It also impacted overall results since I was trying to save some tokens by providing shorter instructions/prompts. For this reason I thought a finetuned Mistral model would be more cost effective. below outlines my approach and result from this experiment. TL/DR: Because of cost and not mind blowing results I decided to not go with finetuning. 
+- convert the `faq_training.txt` file to a dictionary format that can be used to train Mistral 7B Instruct. {<User>: Q: <xxx> <bot>: A: <xxx>}
+- Finetuning for all 855 questions takes anywhere from 7 to 9 mins for Mistral 7B model. Cost ~ 12 bucks for each run for Mistral 7B
+- The results were less then stellar. It takes a long time to bring the model online. So if it shuts off, it will be at least 10 to 15 minutes until it comes back online. It is not possible to shut down and then bring it back up when needed. Also, there is only one option for GPPU - L4.
+- In conclusion: Finetuned Mistral 7B also did not work great. Definitely less then stellar performance. It would reapeat words, had issues with fully understanding the relation between question and provided chunks. Code and results are in `fine_tune_mistral_togetherai.ipynb` notebook.
+- For this reason I moved to Mixtral 8x7B - Instruct and instead of finetuning I used a base model and improved my instructions and NLU logic. 
 
 
 
-# Other potential tasks:
-# Build a vector db from the Q&A data set and then use the Voiceflow API to answer questions from a Vector DB like Qdrand - Not sure this is necessary since Voiceflow already provides a free use of their Vector DB. Also Voiceflow version will be easier to maintain for the user.
-Steps are: 
-Create a new free Qdrant cloud cluster
-Use pdfplumber to extract text from PDF and create embeddings - Using txt
-Use Qdrant to index the embeddings - Voiceflow does automatically - check the embedding they use - probabaly free version
-Use Qdrant to search for the most similar embeddings based on a users input - Voiceflow similarity search
-Generate a response based on the most similar embedding - 
+###  Other ideas I considered:
+##### Build a vector db from the Q&A data set:
+ To use with the the Voiceflow Dialog API to answer questions from a Vector DB such as Qdrand - I decided against this since Voiceflow already provides a free use of their Vector DB. Also I would need more processing power to get an external DB run faster. This coupled with the time it takes to make an API call also increases the overall latency. There is no cost to adding to Voiceflow Knowledge Base. Also Voiceflow will be easier to maintain for the user. Let;s remember the end user does not care I used Qdrant or Pinecone for my database. They dont care if the front end is done in Chainlit or Streamlit. They want a performent chatbot that produces the right info in a short time and looks pretty. The main goal of the business owner is to provide an incredible service at the right price. 
+ 
