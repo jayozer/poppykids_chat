@@ -11,15 +11,15 @@
 2. **Execute `convert_to_QA.ipynb` Notebook**
    - **Inputs**: Text files from the `blogs` folder
    - **Processes**: Generates Q&A pairs using LangChain
-   - **Outputs**: `faq_training.txt` (contains Q&A pairs)
+   - **Outputs**: `clean_faq_dataset.txt` (contains Q&A pairs)
 
 3. **Final Output**
-   - The Q&A pairs stored in `faq_training.txt` can be used for training models or other purposes.
+   - The Q&A pairs stored in `clean_faq_dataset.txt` can be used for training models or other purposes.
 
 ```
           extract_web_list.py      convert_to_QA.ipynb
 Website List ─────────────> Text Files ─────────────> Q&A Pairs
-   (website_list.txt)            (blogs folder)          (faq_training.txt)
+   (website_list.txt)            (blogs folder)          (clean_faq_dataset.txt)
 ```
 
 
