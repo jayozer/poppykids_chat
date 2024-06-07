@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 # Fetch the HTML code
-response = requests.get('https://www.colgate.com/en-us/oral-health/cleft-lip-palate/cleft-palate-and-your-childs-teeth')
+response = requests.get('https://www.colgate.com/en-us/oral-health/teen-oral-care/all-about-teen-oral-care')
 html_code = response.text
 
 # Parse the HTML code
