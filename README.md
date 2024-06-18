@@ -64,6 +64,6 @@ flowchart TD;
  To use with the the Voiceflow Dialog API to answer questions from a Vector DB such as Qdrand - I decided against this since Voiceflow already provides a free use of their Vector DB. Also I would need more processing power to get an external DB run faster. This coupled with the time it takes to make an API call also increases the overall latency. There is no cost to adding to Voiceflow Knowledge Base. Also Voiceflow will be easier to maintain for the user. Afterall **the end user does not care I used Qdrant or Pinecone for my database. They dont care if the front end is done in Chainlit, Streamlit or Voiceflow. They want a performent chatbot that produces the right info in a short time and looks pretty.*** The main goal of the business practice is to provide an incredible service at the right price. 
 
 
-### Chatbot:
+### Chatbot: (v2 is on the way!!!)
 https://poppykids-4ea4532ed336b911edaa144d4b73d.webflow.io
 
