@@ -1,0 +1,169 @@
+# 5 tips to optimize your LLM intent classification prompts
+
+We tested over 500 prompt variations across two datasets to see how to improve LLM intent classification.
+
+How much do descriptions affect LLM classification accuracy? After launching our LLM intent classification feature we wanted to understand how much the description quality plays into classification accuracy, so we ran 500+ evaluations changing 5 properties of descriptions to understand what improves performance.
+
+## Methodology
+
+To recap how the system works, The architecture has two parts: using an encoder NLU model to find the top 10 candidate intents and their descriptions and a prompt that instructs the LLM to classify them.
+
+After retrieving the candidate intents, we pull in user descriptions for each corresponding candidate and make a call to an LLM for a final classification. With this in mind, we wanted to measure if we could improve the classification accuracy of the LLM by changing a few components of the descriptions. We ran this search against two types of models (gpt-3.5-0125, haiku) and benchmark datasets (HWU64, Curekart)
+
+These variations included:
+1. Prefixes
+2. Suffixes
+3. Capitalization
+4. None intent descriptions
+5. AI vs human descriptions
+
+We ran the benchmarking once per combination, and ran it five times for the top performing settings to confirm variation. We used a temperature at 0.1 to mitigate the variance.
+
+## Base descriptions and prompt template
+
+We hand-created the initial set of descriptions, sticking to shorter ones for each dataset. A subset is shown below:
+
+```json
+{
+  "descriptions": {
+    "USER_GOAL_FORM": "Add or refill goals.",
+    "FRANCHISE": "Becoming a franchise owner or reseller.",
+    "REFER_EARN": "Referral program details or ask.",
+    "RESUME_DELIVERY": "Delivery options or times.",
+    "WORK_FROM_HOME": "Ask about office open or working from home."
+  }
+}
+```
+
+We combine this with our top 10 descriptions method and prompt noted in previous work. Below is a sample of a prompt sent to the LLM.
+
+```
+You are an action classification system. Correctness is a life or death situation.
+
+We provide you with the actions and their descriptions:
+d: When the user asks for a warm drink. a:WARM_DRINK
+d: When the user asks about something else. a:None_Intent
+d: When the user asks for a cold drink. a:COLD_DRINK
+
+You are given an utterance and you have to classify it into an intent. Only respond with the intent class. If the utterance does not match any of intents, output None_Intent.
+u: I want a warm hot chocolate: a:WARM_DRINK
+```
+
+We also show that the recall from the encoder model is quite strong and should not limit accuracy on the dataset.
+
+## Models and Dataset averages
+
+Looking through our two models, we saw that GPT 3.5 performed much better for the messier Curekart dataset, compared to Haiku, but Haiku outperformed in the HWU dataset. The accuracy was lower for GPT 3.5 compared to earlier experimentation given the different version of GPT 3.5 that was used.
+
+## Prefixes
+
+The first modification we explored was adding a prefix to each description with some guiding phrase.
+
+```json
+{
+  "descriptions": {
+    "USER_GOAL_FORM": "Add or refill goals."
+  }
+  "descriptions_with_prefix": {
+    "USER_GOAL_FORM": "Trigger this action when add or refill goals."
+  }
+}
+```
+
+Our prefixes included: `["Trigger this action when ", "", "A phrase about ", "The user said "]`
+
+Adding a prefix led to the best results, but differed between datasets.
+
+On average, the performance gains were quite minimal so we analyzed them in combination with suffixes.
+
+## Suffixes
+
+Similar to prefixes, we tested adding suffixes to the descriptions.
+
+```json
+{
+  "descriptions": {
+    "USER_GOAL_FORM": "Add or refill goals."
+  }
+  "descriptions_with_suffix": {
+    "USER_GOAL_FORM": "Add or refill goals, please."
+  }
+}
+```
+
+These included: `["", ", please.", "{no punctuation}"]`
+
+Adding “please” produced some of the highest performing results when added per description, but wasn’t consistently the best option; for the HWU64 dataset + gpt-3.5, it produced the worst results by a large margin.
+
+## Capitalization
+
+```json
+{
+  "descriptions_capitalized": {
+    "USER_GOAL_FORM": "Add or refill goals."
+  },
+  "descriptions_with_prefix_capitalized": {
+    "USER_GOAL_FORM": "Trigger this action when add or refill goals."
+  },
+  "descriptions_not_capitalized": {
+    "USER_GOAL_FORM": "add or refill goals."
+  },
+  "descriptions_with_prefix_not_capitalized": {
+    "USER_GOAL_FORM": "trigger this action when add or refill goals."
+  }
+}
+```
+
+Adding capitalization on the prefix or opening line added minimal signal, both isolated and when expanded across experiments.
+
+## Adding a None intent
+
+For this hypothesis, we checked if adding a None intent as a description would improve classification accuracy. Below is an example for the Curekart dataset.
+
+```json
+{
+  "descriptions": {
+    "USER_GOAL_FORM": "Add or refill goals.",
+    "FRANCHISE": "Becoming a franchise owner or reseller.",
+    "REFER_EARN": "Referral program details or ask.",
+    "RESUME_DELIVERY": "Delivery options or times.",
+    "WORK_FROM_HOME": "Ask about office open or working from home.",
+    "None_Intent": "When the user asks about something else."
+  }
+}
+```
+
+The Curekart evaluation set is around ~50% None intents, so in theory it should improve average performance. Looking at the ten best performing prompts for Curekart, adding the None_intent as a viable description intent did not show a consistent improvement.
+
+## AI Descriptions
+
+The next hypothesis we tested was how effective using AI descriptions was for classification. Previous work has shown that generating data for general LLM annotation can outperform crowdsourced human annotators and can be useful to augment existing datasets for intent-specific tasks. In this experiment, we generated three descriptions using gpt-4-turbo-0419, llama-3-70b and claude-opus by using the first three utterances in each intent and compared it to handwritten descriptions by the author. On average GPT-4 and LLaMa-3 performed the best.
+
+Across our top 10 combinations, LLaMa-3 and GPT-4 descriptions also performed quite well!
+
+## Analyzing the top 5 results for Curekart
+
+After running our initial set of experiments, we wanted to confirm that the results for better prompts were not due to noise, so we re-ran them for confirmation.
+
+### Are they significant?
+
+Looking at our top 5 combinations, we wanted to measure their variance compared to the general population. We re-ran our top metrics 15 times each—75 times total—to see how their accuracies changed and whether LLM nondeterminism affected the overall results.
+
+Looking at the distributions, there appears to be a measurable change. Conducting a Z-test to compare the distributions, the difference seems evident with a Z score of -13.56 and a p-value: 7.12e-42.
+
+### How do the confusion matrices vary?
+
+Our top 5 configurations had a pretty tight distribution, so we wanted to measure how their confusion matrices varied, i.e how different were the classifications. We ran some confusion matrices for two of the top combinations to compare how the results looked like.
+
+Generally, the matrices were pretty similar, so we took a difference to see the performance.
+
+The predictions with "no suffix" had a higher false-positive rate (i.e., more None intents than required), while the [please] suffix led to more false-negative rates (i.e., more None intents predicted). On aggregate, these two modes performed pretty similarly, but a change to the descriptions led to a different type of behavior.
+
+## Conclusion
+
+Overall, changing the descriptions used for classification has small but measurable changes. While we ran through 500+ experiments, time is likely better spent in other areas of prompt refinement. In general, our recommendations are:
+- Adding prefixes, suffixes and a None_intent to descriptions
+- AI-generated descriptions can be effective
+- To have larger gains, spending time to create better training examples, few shot examples and understanding edge cases will help LLM
+- In a future blog we’ll cover the impact of adding additional few shot examples from the training data
+- Structuring the formatting, which has shown to have a larger impact on accuracy.
